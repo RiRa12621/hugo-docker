@@ -30,7 +30,7 @@ ADD . .
 ENV HUGO_BIND="0.0.0.0"
 EXPOSE 1313
 
-CMD ["hugo", "serve", "--bind=${HUGO_BIND}"]
+CMD ["sh", "-c", "hugo serve --bind=${HUGO_BIND}"]
 
 ```
 
