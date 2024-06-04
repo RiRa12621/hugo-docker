@@ -14,7 +14,7 @@ build on top.
 
 ### Use as hugo container
 
-`docker run -ti --rm -v /path/to/my/hugo/site:/website rira12621/hugo-docker hugo serve --source /website`
+`docker run -ti --rm =p 1313:1313 -v /path/to/my/hugo/site:/website rira12621/hugo-docker hugo serve --source /website --bind=0.0.0.0`
 
 
 ### Build on top
@@ -27,9 +27,11 @@ FROM rira12621/hugo-docker
 WORKDIR /website
 ADD . .
 
-CMD ["hugo", "serve"]
+ENV HUGO_BIND="0.0.0.0"
+EXPOSE 1313
+
+CMD ["hugo", "serve", "--bind=${HUGO_BIND}"]
 
 ```
 
 
-Note that this image is build on top of Alpine .
